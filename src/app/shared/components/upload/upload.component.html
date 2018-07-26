@@ -1,0 +1,26 @@
+<div class="drop-container z-depth-2" ngFileDrop (uploadOutput)="onDrop($event)" (dragleave)="onDragLeave()" (dragover)="onDragStart()" [ngClass]="{ 'is-drop-over': isDragOver }">
+  <label for="upload-input" class="drop-label">
+      Перенесите сюда файлы для загрузки
+  </label>
+  <input type="file" id="upload-input" (change)="onFilesSelected($event)" multiple class="d-none"/>
+</div>
+
+<div class="upload-item" *ngFor="let file of selectedFiles; let i = index;">
+  <div class="upload-item-content d-flex justify-content-between align-items-center z-depth-2">
+    <div class="d-flex justify-content-start">
+      <div class="icon mr-3">
+        <mat-icon>insert_drive_file</mat-icon>
+      </div>
+      <div class="filename">
+        <span>{{ file.name }}</span>
+      </div>
+    </div>
+    <div>
+      <div class="file-action">
+        <button (click)="removeFile(i)" type="button" mat-icon-button>
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

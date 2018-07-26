@@ -1,0 +1,55 @@
+<form [formGroup]="form">
+  <div class="header-page d-flex justify-content-between align-items-center">
+    <div>
+      <mat-form-field class="mr-3">
+        <input matInput [matDatepicker]="startDate" formControlName="startDate" placeholder="Начало">
+        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="endDate" formControlName="endDate" placeholder="Конец">
+        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+  </div>
+  <div class="content-main-page">
+
+    <div class="spinner d-flex justify-content-center my-4" *ngIf="spinner">
+      <mat-spinner diameter="45"></mat-spinner>
+    </div>
+
+    <div class="row" *ngIf="!spinner">
+      <div class="col-6">
+        <ngx-charts-pie-chart
+          [view]="['', 400]"
+          [results]="stats"
+          [explodeSlices]="false"
+          [legend]="true"
+          [legendTitle]="'Дата'"
+          [labels]="true"
+          [doughnut]="true">
+        </ngx-charts-pie-chart>
+      </div>
+      <div class="col-6">
+        <div class="d-flex">
+          <ngx-charts-bar-vertical
+            [view]="['', 400]"
+            [results]="stats"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="true"
+            [legendTitle]="'Дата'"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            [xAxisLabel]="'Дата'"
+            [yAxisLabel]="'Количество записей'">
+          </ngx-charts-bar-vertical>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>

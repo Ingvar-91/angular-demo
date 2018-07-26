@@ -1,0 +1,18 @@
+<div id="sidebar" class="z-depth-3" [ngClass]="{'active': sidebarActive}">
+  <div class="navbar-header z-depth-1 justify-content-between align-items-center d-flex">
+    <div class="logo text-uppercase">Logo</div>
+    <div class="icon">
+      <button (click)="onSidebarActive()" mat-icon-button class="button-menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </div>
+  <ul>
+    <li *ngFor="let navItem of navItems; let i = index">
+      <a [routerLink]="navItem.url" routerLinkActive="active">
+        <i class="icon material-icons">{{navItem.icon}}</i>
+        <span class="text">{{navItem.title}}</span>
+      </a>
+    </li>
+  </ul>
+</div>

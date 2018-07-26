@@ -1,0 +1,45 @@
+<div class="bg-dark d-flex align-items-center" id="auth-page">
+  <div id="auth-container" class="z-depth-4">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h4 class="text-uppercase mb-5">Создайте аккаунт</h4>
+
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Имя" formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <input matInput placeholder="E-mail" formControlName="email">
+        <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">
+          <span *ngIf="form.get('email')['errors']['required']">Email не может быть пустым</span>
+          <span *ngIf="form.get('email')['errors']['email']">Введите корректный Email</span>
+          <span *ngIf="form.get('email')['errors']['userExist']">Такой пользователь уже есть</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Пароль" formControlName="password" [type]="'password'">
+        <mat-error *ngIf="form.get('password').invalid && form.get('password').touched">
+          <span *ngIf="form.get('password')['errors']['required']">Обязательное поле</span>
+          <span *ngIf="form.get('password')['errors']['minlength']">Пароль должен быть не менее {{ form.get('password')['errors']['minlength']['requiredLength'] }} символов</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Повторите пароль" formControlName="passwordConfirm" [type]="'password'">
+        <mat-error *ngIf="form.get('passwordConfirm').invalid && form.get('passwordConfirm').touched">
+          <span *ngIf="form.get('passwordConfirm')['errors']['required']">Обязательное поле</span>
+          <span *ngIf="form.get('passwordConfirm')['errors']['passwordConfirm']">Пароли не совпадают</span>
+        </mat-error>
+      </mat-form-field>
+
+      <div class="input-field mt-5">
+        <button mat-raised-button color="primary" [disabled]="form.invalid">Создать аккаунт</button>
+      </div>
+
+      <div class="mt-4">
+        <a [routerLink]="'/login'">Войти?</a>
+      </div>
+
+    </form>
+  </div>
+</div>

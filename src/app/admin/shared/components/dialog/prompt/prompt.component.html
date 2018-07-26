@@ -1,0 +1,9 @@
+<div md-dialog-content>
+  <mat-form-field class="w-100">
+    <input matInput placeholder="{{data.message}}" #input/>
+  </mat-form-field>
+</div>
+<div md-dialog-actions class="d-flex justify-content-end">
+  <button class="mr-3" type="button" mat-raised-button color="primary" (click)="dialogRef.close(input.value)">Подтвердить</button>
+  <button type="button" mat-raised-button (click)="dialogRef.close(false)">Закрыть</button>
+</div>

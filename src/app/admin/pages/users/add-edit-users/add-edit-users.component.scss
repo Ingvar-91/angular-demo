@@ -1,0 +1,63 @@
+@import '../../../scss/variables';
+
+#avatar-upload{
+  position: relative;
+  width: 148px;
+  height: 148px;
+  .avatar-container{
+    width: inherit;
+    height: inherit;
+    background-color: $grey-200;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid $grey-300;
+    &:after{
+      content: '';
+      transition: opacity 0.3s;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.12);
+      opacity: 0;
+      visibility: hidden;
+      z-index: 3;
+    }
+    &:hover{
+      &:after{
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    .icon{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 40px;
+      margin-left: -20px;
+      margin-top: -20px;
+      height: 40px;
+      width: 40px;
+      color: $grey-500;
+      z-index: 1;
+    }
+    .img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+  }
+  .action{
+    position: absolute;
+    transition: bottom 0.3s;
+    z-index: 4;
+    right: -60px;
+    top: 0;
+  }
+  .image-cropper{
+    border: 1px solid $grey-300;
+  }
+}

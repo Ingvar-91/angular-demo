@@ -1,0 +1,10 @@
+.profile-image-container{
+  height: 55px;
+  width: 55px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 8px 0;
+  .profile-image{
+    width: 100%;
+  }
+}

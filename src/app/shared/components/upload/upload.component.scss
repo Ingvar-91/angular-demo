@@ -1,0 +1,24 @@
+@import '../../../admin/scss/variables';
+
+.drop-container{
+  border: 2px dashed $blue;
+  text-align: center;
+  transition: background-color 0.3s;
+  .drop-label{
+    cursor: pointer !important;
+    display: block;
+    padding: 70px 20px;
+  }
+  &.is-drop-over{
+    border-style: solid;
+    background-color: $lactic;
+  }
+  &:hover{
+    background-color: $lactic;
+  }
+}
+
+.upload-item-content{
+  margin: 14px 0;
+  padding: 7px 20px;
+}

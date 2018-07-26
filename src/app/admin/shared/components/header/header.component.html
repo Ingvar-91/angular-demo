@@ -1,0 +1,31 @@
+<header id="header" class="z-depth-1 d-flex justify-content-between align-items-center">
+  <div id="header-icons-link">
+    <a [routerLink]="'/admin/stats'" matTooltip="Статистика">
+      <mat-icon class="ml-2">insert_chart</mat-icon>
+    </a>
+    <a [routerLink]="'/admin/posts'" matTooltip="Записи">
+      <mat-icon class="ml-2">import_contacts</mat-icon>
+    </a>
+    <a [routerLink]="'/admin/users'" matTooltip="Пользователи">
+      <mat-icon class="ml-2">account_box</mat-icon>
+    </a>
+  </div>
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuHeader" id="header-profile">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="img mr-4">
+          <img class="img-fluid" src="{{avatarImg}}" alt=""/>
+        </div>
+        <span>{{authService.auth().email}}</span>
+        <i class="icon material-icons ml-2">keyboard_arrow_down</i>
+      </div>
+    </button>
+    <mat-menu #menuHeader="matMenu">
+      <button mat-menu-item (click)="logout()">
+         <span class="d-flex align-items-center"><i class="material-icons mr-2">exit_to_app</i> Выйти</span>
+      </button>
+    </mat-menu>
+  </div>
+
+</header>

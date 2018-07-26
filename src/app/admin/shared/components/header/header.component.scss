@@ -1,0 +1,29 @@
+@import '../../../scss/variables';
+
+#header{
+  height: 64px;
+  z-index: 1;
+  background: #fff;
+}
+
+#header-profile{
+  height: 64px;
+  .img{
+    height: 48px;
+    width: 48px;
+    overflow: hidden;
+    border-radius: 50%;
+    img{
+      width: 100%;
+    }
+  }
+}
+
+#header-icons-link{
+  padding-left: 10px;
+  a{
+    color: $grey;
+    height: 40px;
+    width: 40px;
+  }
+}

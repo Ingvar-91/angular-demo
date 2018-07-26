@@ -1,0 +1,101 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" #userForm="ngForm">
+  <div class="header-page d-flex justify-content-between align-items-center">
+    <div>
+      <button [routerLink]="['/admin/users']" mat-icon-button type="button">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+    <div>
+      <button type="submit" mat-raised-button class="text-uppercase" [disabled]="form.invalid">Сохранить</button>
+    </div>
+  </div>
+  <div class="content-card-page py-3 px-3">
+
+    <div class="row">
+      <div class="col-sm-12 col-md-6 offset-md-2">
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Имя" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Фамилия" formControlName="surname">
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Отчество" formControlName="patronymic">
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <span matPrefix>+7 &nbsp;</span>
+          <input type="tel" matInput placeholder="Телефон" formControlName="phone">
+          <mat-error *ngIf="form.get('phone').invalid && form.get('phone').touched">
+            <span *ngIf="form.get('phone')['errors']['pattern']">Только цифры</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <input matInput placeholder="E-mail" formControlName="email">
+          <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">
+            <span *ngIf="form.get('email')['errors']['required']">Обязательное поле</span>
+            <span *ngIf="form.get('email')['errors']['email']">Введите корректный Email</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Пароль" formControlName="password" [type]="'password'" (keyup)="onChangePassword()">
+          <mat-error *ngIf="form.get('password').invalid && form.get('password').touched">
+            <span *ngIf="form.get('password')['errors']['required']">Обязательное поле</span>
+            <span *ngIf="form.get('password')['errors']['minlength']">Пароль должен быть не менее {{ form.get('password')['errors']['minlength']['requiredLength'] }} символов</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Повторите пароль" formControlName="passwordConfirm" [type]="'password'" (change)="onChangePassword()">
+          <mat-error *ngIf="form.get('passwordConfirm').invalid && form.get('passwordConfirm').touched">
+            <span *ngIf="form.get('passwordConfirm')['errors']['required']">Обязательное поле</span>
+            <span *ngIf="form.get('passwordConfirm')['errors']['passwordConfirm']">Пароли не совпадают</span>
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div class="col-sm-12 col-md-4">
+
+        <div>
+          <label class="text-secondary">Изображение</label>
+          <div id="avatar-upload">
+            <label for="avatar-input" class="avatar-container">
+              <img class="img" [src]="croppedImage" *ngIf="croppedImage" alt=""/>
+              <mat-icon class="icon">add_circle_outline</mat-icon>
+            </label>
+            <div class="action" *ngIf="croppedImage">
+              <button matTooltip="Убрать изображение" class="z-depth-1" mat-icon-button color="primary" (click)="removeCropImage()">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+            <input type="file" id="avatar-input" formControlName="file" class="d-none" (change)="fileChangeEvent($event)"/>
+          </div>
+        </div>
+        <div>
+          <div class="spinner d-flex justify-content-center my-3" *ngIf="spinner">
+            <mat-spinner diameter="45"></mat-spinner>
+          </div>
+          <image-cropper class="px-0 py-2 image-cropper"
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="1 / 1"
+            [resizeToWidth]="148"
+            [cropper]="cropper"
+            format="jpg"
+            (imageLoaded)="imageLoaded()"
+            (imageCroppedBase64)="imageCropped($event)"
+            (loadImageFailed)="loadImageFailed()"
+            #cropper
+          ></image-cropper>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</form>

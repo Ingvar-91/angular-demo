@@ -1,0 +1,9 @@
+<div md-dialog-content>
+  <p>
+    {{data.message}}
+  </p>
+</div>
+<div md-dialog-actions class="d-flex justify-content-end">
+  <button class="mr-3" type="button" mat-raised-button color="primary" (click)="dialogRef.close(true)">Подтвердить</button>
+  <button type="button" mat-raised-button (click)="dialogRef.close(false)">Закрыть</button>
+</div>
