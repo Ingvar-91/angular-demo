@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
     if (this.authService.auth().image) {
       this.avatarImg = environment.domain + environment.filesUrl.users + this.authService.auth().image;
     } else {
-      this.avatarImg = environment.imgNotFound;
+      this.avatarImg = environment.domain + environment.imgNotFound;
     }
   }
 
