@@ -11,7 +11,7 @@ export class UploadComponent implements OnInit {
   isDragOver = false;
   @Input() maxCountFiles = 8;
   @Input() maxSizeFile = 2;
-  private selectedFiles: object[] = [];
+  selectedFiles: object[] = [];
 
   constructor(
     private toastr: ToastrService

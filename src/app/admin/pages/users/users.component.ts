@@ -95,8 +95,9 @@ export class UsersComponent extends BaseComponent implements OnInit {
       Array.from(data.items).forEach((item) => {
         if (item['image']) {
           item['image'] = environment.domain + environment.filesUrl.users + item['image'];
+        } else {
+          item['image'] = environment.domain + environment.imgNotFound;
         }
-
       });
       this.users = data.items;
     });

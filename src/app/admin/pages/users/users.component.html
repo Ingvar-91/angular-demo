@@ -62,8 +62,7 @@
             <th mat-header-cell *matHeaderCellDef>Изображение</th>
             <td mat-cell *matCellDef="let row">
               <div class="profile-image-container">
-                <img class="profile-image" src="{{row.image}}" alt="" *ngIf="row.image"/>
-                <img class="profile-image" src="assets/profile.jpg" alt="" *ngIf="!row.image"/>
+                <img class="profile-image" src="{{row.image}}" alt=""/>
               </div>
             </td>
           </ng-container>

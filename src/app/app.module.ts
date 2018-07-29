@@ -9,32 +9,7 @@ import {AuthService} from './shared/services/auth.service';
 import {AdminModule} from './admin/admin.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthGuard} from './shared/core/auth.guard';
-
-/*
-const materialModules = [
-  MatInputModule,
-  MatFormFieldModule,
-  MatButtonModule,
-  MatMenuModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatCardModule,
-  MatSelectModule,
-  MatListModule,
-  MatSidenavModule,
-  MatGridListModule,
-  MatCheckboxModule
-]
-
-const components = [
-  NavbarTopComponent,
-  NavbarBreadcrumbsComponent,
-  NavbarDetailsComponent,
-  NavbarSearchComponent,
-  NavbarBottomComponent,
-  HamburgerMenuComponent,
-  CarouselComponent
-]*/
+import {AdminGuard} from './shared/core/admin.guard';
 
 @NgModule({
   declarations: [
@@ -51,7 +26,8 @@ const components = [
   providers: [
     AuthService,
     UsersService,
-    AuthGuard
+    AuthGuard,
+    AdminGuard
   ],
   bootstrap: [AppComponent]
 })

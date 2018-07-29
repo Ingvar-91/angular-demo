@@ -4,7 +4,7 @@ import {AuthService} from '../services/auth.service';
 import {Injectable} from '@angular/core';
 
 @Injectable()
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AdminGuard implements CanActivate, CanActivateChild {
   constructor(
     private authService: AuthService,
     private router: Router
@@ -12,9 +12,15 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.check()) {
-      this.router.navigate(['/admin/stats']);
+      return true;
+    } else {
+      this.router.navigate(['/login'], {
+        queryParams: {
+          accsssDenied: true
+        }
+      });
+      return false;
     }
-    return true;
   }
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {

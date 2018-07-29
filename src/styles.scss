@@ -7,10 +7,10 @@ body{
 }
 
 /* toastr */
-@import "~ngx-toastr/toastr.css";
+@import "../node_modules/ngx-toastr/toastr.css";
 
 /* angular material */
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 /* framework */
 @import './scss/framework';

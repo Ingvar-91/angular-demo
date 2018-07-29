@@ -6,10 +6,10 @@ import {StatsComponent} from './pages/stats/stats.component';
 import {AddEditUsersComponent} from './pages/users/add-edit-users/add-edit-users.component';
 import {PostsComponent} from './pages/posts/posts.component';
 import {AddEditPostsComponent} from './pages/posts/add-edit-posts/add-edit-posts.component';
-import {AuthGuard} from '../shared/core/auth.guard';
+import {AdminGuard} from '../shared/core/admin.guard';
 
 const routes: Routes = [
-  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
+  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard], children: [
     {path: 'posts', children: [
       {path: '', component: PostsComponent},
       {path: 'add', component: AddEditPostsComponent},

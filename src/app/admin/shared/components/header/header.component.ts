@@ -10,10 +10,10 @@ import { environment } from '../../../../../environments/environment';
 })
 export class HeaderComponent implements OnInit {
 
-  private avatarImg: string;
+  avatarImg: string;
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) { }
 
